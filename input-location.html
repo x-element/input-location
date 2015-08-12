@@ -1,12 +1,12 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../google-apis/google-apis.html">
 <dom-module id="input-location">
+  <style>
+    :host {
+      display: inline-block;
+    }
+  </style>
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
 
     <google-maps-api id="maps" on-api-load="on_api_load"></google-maps-api>
 

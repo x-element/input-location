@@ -1,0 +1,45 @@
+<link rel="import" href="../google-apis/google-apis.html">
+<dom-module id="input-location">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <google-maps-api id="maps" on-api-load="on_api_load"></google-maps-api>
+
+    <input id="input" class="input" type="text" value="{{value}}" />
+
+  </template>
+</dom-module>
+<script>
+  Polymer({
+
+    is: 'input-location'
+
+    properties: {
+      value: {
+        type: String
+      },
+      options: {
+        type: Object,
+        value: {}
+      }
+    },
+
+    on_load_api: function () {
+      this.autocomplete = new google.maps.places.Autocomplete(this.$.input, this.options);
+      google.maps.event.addListener(this.autocomplete, 'place_changed', this.on_change_place.bind(this));
+    },
+
+    on_change_place: function () {
+      var place = this.autocomplete.getPlace();
+      if (!place.address_components) {
+        return;
+      }
+      this.$.input.value = place.formatted_address;
+    }
+
+  });
+</script>

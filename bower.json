@@ -1,7 +1,13 @@
 {
   "name": "input-location",
+  "description": "input location",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0",
     "google-apis": "GoogleWebComponents/google-apis#^1.0"
-  }
+  },
+  "keywords": [
+    "web-components",
+    "input",
+    "location"
+  ]
 }

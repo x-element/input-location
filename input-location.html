@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../google-apis/google-apis.html">
+<link rel="import" href="../google-apis/google-maps-api.html">
 <dom-module id="input-location">
   <style>
     :host {
@@ -8,7 +8,7 @@
   </style>
   <template>
 
-    <google-maps-api id="maps" on-api-load="on_api_load"></google-maps-api>
+    <google-maps-api id="maps" libraries="places" on-api-load="on_api_load"></google-maps-api>
 
     <input id="input" class="input" type="text" value="{{value}}" />
 

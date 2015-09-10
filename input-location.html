@@ -9,7 +9,6 @@
   <template>
 
     <google-maps-api id="maps" libraries="places" on-api-load="on_api_load"></google-maps-api>
-
     <input id="input" class="input" type="text" value="{{value}}" />
 
   </template>
@@ -21,11 +20,17 @@
 
     properties: {
       value: {
-        type: String
+        type: String,
+        notify: true
       },
       options: {
         type: Object,
-        value: {}
+        value: function () { return {}; }
+      },
+      place: {
+        type: Object,
+        value: function () { return {}; },
+        notify: true
       }
     },
 
@@ -35,11 +40,11 @@
     },
 
     on_change_place: function () {
-      var place = this.autocomplete.getPlace();
-      if (!place.address_components) {
+      this.place = this.autocomplete.getPlace();
+      if (!this.place.address_components) {
         return;
       }
-      this.$.input.value = place.formatted_address;
+      this.value = this.place.formatted_address;
     }
 
   });
